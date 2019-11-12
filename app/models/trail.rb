@@ -1,3 +1,3 @@
 class Trail < ApplicationRecord
-  attributes :title, :description, :intensity, :duration, :location, :extra
+  validates_presence_of :title, :description, :intensity, :duration, :location
 end

@@ -11,10 +11,17 @@ RSpec.describe Trail, type: :model do
   end
   
   describe 'Validation' do
+    it { is_expected.to validate_presence_of :title }
+    it { is_expected.to validate_presence_of :description }
+    it { is_expected.to validate_presence_of :intensity }
+    it { is_expected.to validate_presence_of :duration }
+    it { is_expected.to validate_presence_of :location }
 
   end
 
   describe 'Factory' do
-
+    it 'should have valid Factory' do
+      expect(create(:trail)).to be_valid
+    end
   end
 end
