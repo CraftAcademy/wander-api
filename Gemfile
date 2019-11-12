@@ -16,6 +16,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'coveralls', require: false
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do

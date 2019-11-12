@@ -9,8 +9,9 @@ class V1::TrailsController < ApplicationController
     end
   end
 
-  private 
-  render_error_message(message, status) do
-    render json: {error_message: message, status: status}
+  private
+
+  def render_error_message(message, status) 
+    render json: { error_message: message }, status: status
   end
 end
