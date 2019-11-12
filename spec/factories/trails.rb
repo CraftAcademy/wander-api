@@ -9,7 +9,7 @@ FactoryBot.define do
 
     after(:create) do |trail|
       trail.image.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'testimage.png')),
-      filename: 'attachment.png',
+      filename: 'testimage.png',
       content_type: 'image/png')
     end
   end
