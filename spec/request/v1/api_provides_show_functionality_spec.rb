@@ -34,11 +34,11 @@ RSpec.describe V1::TrailsController, type: :request do
     end
 
     it "Returns no error status" do
-      expect(response.status).to eq 404
+      expect(response.status).to eq 400
     end
     
     it 'Returns error message' do
-      expect(response_json).to eq "There are no trails here turn around"
+      expect(response_json['error_message']).to eq "There is no trail here go back."
     end
   end
 end
