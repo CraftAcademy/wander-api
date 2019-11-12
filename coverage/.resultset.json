@@ -5,43 +5,6 @@
         1,
         null
       ],
-      "/Users/piavonwachenfelt/bootcamp/WanderFinalProject/wander-api/app/controllers/v1/trails_controller.rb": [
-        1,
-        1,
-        0,
-        null,
-        0,
-        0,
-        null,
-        0,
-        null,
-        null,
-        null,
-        1,
-        3,
-        null,
-        3,
-        1,
-        null,
-        2,
-        null,
-        null,
-        null,
-        1,
-        null,
-        1,
-        3,
-        null,
-        null,
-        1,
-        2,
-        null,
-        null
-      ],
-      "/Users/piavonwachenfelt/bootcamp/WanderFinalProject/wander-api/app/controllers/application_controller.rb": [
-        1,
-        null
-      ],
       "/Users/piavonwachenfelt/bootcamp/WanderFinalProject/wander-api/app/models/trail.rb": [
         1,
         1,
@@ -50,6 +13,48 @@
         null
       ],
       "/Users/piavonwachenfelt/bootcamp/WanderFinalProject/wander-api/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/piavonwachenfelt/bootcamp/WanderFinalProject/wander-api/app/controllers/v1/trails_controller.rb": [
+        1,
+        1,
+        3,
+        null,
+        3,
+        2,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        3,
+        null,
+        3,
+        1,
+        null,
+        2,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        3,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null
+      ],
+      "/Users/piavonwachenfelt/bootcamp/WanderFinalProject/wander-api/app/controllers/application_controller.rb": [
+        1,
+        null
+      ],
+      "/Users/piavonwachenfelt/bootcamp/WanderFinalProject/wander-api/app/serializers/trails_serializer.rb": [
         1,
         1,
         null
@@ -82,6 +87,6 @@
         0
       ]
     },
-    "timestamp": 1573570884
+    "timestamp": 1573571117
   }
 }

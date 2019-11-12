@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :trail do
     title {'MyString'}
-    description {'MyText'}
+    description {'My very long description'}
     intensity { 1 }
     extra {'Warning'}
     duration { 60 }
