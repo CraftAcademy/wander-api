@@ -6,5 +6,11 @@ FactoryBot.define do
     extra {'Warning'}
     duration { 60 }
     location {'MyArea'} 
+
+    after(:create) do |trail|
+      trail.image.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'testimage.png')),
+      filename: 'attachment.png',
+      content_type: 'image/png')
+    end
   end
 end
