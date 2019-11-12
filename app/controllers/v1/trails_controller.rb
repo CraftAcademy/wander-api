@@ -1,7 +1,6 @@
 class V1::TrailsController < ApplicationController
   def index 
     trails = Trail.all
-
     if trails.empty?
       render_error_message('No trails here, turn around.', 400)
     else
