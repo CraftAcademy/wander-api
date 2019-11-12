@@ -5,7 +5,7 @@ class V1::TrailsController < ApplicationController
     if trails.empty?
       render_error_message('No trails here, turn around.', 400)
     else
-      render json: trails. each_serializer: TrailsSerializer
+      render json: trails
     end
   end
 
