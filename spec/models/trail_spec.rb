@@ -22,5 +22,5 @@ RSpec.describe Trail, type: :model do
     it 'should have valid Factory' do
       expect(create(:trail)).to be_valid
     end
-  end
+  end 
 end
