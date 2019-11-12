@@ -14,7 +14,9 @@ class V1::TrailsController < ApplicationController
 
     if trail.persisted?
       render json: {message: 'Trail was successfully created'}
-    else 
+    elsif (trail.title).length < 5 || (trail.description).length < 15
+      render_error_message('Please add more content', 400)
+    else
       render_error_message('Please add content to all fields', 400)
     end   
   end
