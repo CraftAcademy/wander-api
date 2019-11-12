@@ -26,3 +26,5 @@ yarn-debug.log*
 
 .coveralls.yml
 coverage/
+coverage/.last_run.json
+coverage/.resultset.json
