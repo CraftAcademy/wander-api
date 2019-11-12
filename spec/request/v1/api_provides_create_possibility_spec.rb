@@ -48,11 +48,13 @@ RSpec.describe V1::TrailsController, type: :request do
       },
       headers: headers
     end
-  it 'returns a 401 response' do
-    expect(response.status).to eq 401
-  end
+    
+    it 'returns a 401 response' do
+      expect(response.status).to eq 401
+    end
 
-  it 'gives error message' do
-    expect(response_json['error']).to eq "You are not authorized!"
+    it 'gives error message' do
+      expect(response_json['error']).to eq "You are not authorized!"
+    end
   end
 end
