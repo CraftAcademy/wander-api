@@ -15,9 +15,10 @@ RSpec.describe V1::TrailsController, type: :request do
         "intensity"=>newTrail.intensity,
         "extra"=>newTrail.extra,
         "duration"=>newTrail.duration,
-        "location"=>newTrail.location
+        "location"=>newTrail.location,
+        "image"=>response_json['image']
+       
       }
-
       expect(response_json).to eq expect_response
     end
     
