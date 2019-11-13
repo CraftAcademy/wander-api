@@ -3,7 +3,7 @@ RSpec.describe V1::TrailsController, type: :request do
       let!(:newTrail) { create(:trail) }
     
     before do
-      get `/v1/trails/#{newTrail.id}`
+      get "/v1/trails/#{newTrail.id}"
     end
 
     it 'returns the data in its correct structure' do
