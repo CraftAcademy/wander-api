@@ -1,13 +1,14 @@
 RSpec.describe 'User Registration', type: :request do
-  
+  let(:headers) { { HTTP_ACCEPT: 'application/json' } }
 
   describe 'User inputs valid credentials' do
+
     before do
       post '/v1/auth',
         params: {
-          name: 'User'
-          email: 'user@mail.com'
-          password: 'password'
+          name: 'User',
+          email: 'user@mail.com',
+          password: 'password',
           password_confirmation: 'password'
         },
         headers: headers
@@ -23,18 +24,19 @@ RSpec.describe 'User Registration', type: :request do
   end
 
   describe 'non-matching password confirmation' do
+
     before do
       post '/v1/auth',
         params: {
-          name: 'User'
-          email: 'user@mail.com'
-          password: 'password'
+          name: 'User',
+          email: 'user@mail.com',
+          password: 'password',
           password_confirmation: 'wrong_password'
         },
         headers: headers
     end
 
-    it 'returns error message' do
+    it 'returns an error message' do
       expect(repsonse_json['errors']['password_confirmation']).to eq ["doesn't match Password"]
     end
 
@@ -43,5 +45,54 @@ RSpec.describe 'User Registration', type: :request do
     end
   end
 
-  
+  describe 'user inputs an invalid email' do
+    
+    before do
+      post '/v1/auth',
+        params: {
+          name: 'user_2',
+          email: 'user@mail',
+          password: 'password',
+          password_confirmation: 'password'
+        },
+        headers: headers
+    end
+
+    it 'returns an error message' do
+      expect(repsonse_json['errors']['email']).to eq ['is not an email']
+    end
+
+    it 'returns an error status' do
+      expect(repsonse.status).to eq 422
+    end
+  end
+    
+  describe 'User inputs an already registered email' do
+
+    before do
+      create(:user,
+              name: 'user',
+              email: 'user@mail.com',
+              password: 'password',
+              password_confirmation: 'password'
+            )
+
+      post '/v1/auth',
+        params: {
+          name: 'user_1',
+          email: 'user@mail.com',
+          password: 'password',
+          password_confirmation: 'password'
+        },
+        headers: headers
+    end
+
+    it 'returns an error message' do
+      expect(repsonse_json['errors']['email']).to eq ['has already been taken']
+    end
+
+    it 'returns an error status' do
+      expect(repsonse.status).to eq 422
+    end
+  end
 end
