@@ -1,21 +1,21 @@
 RSpec.describe V1::TrailsController, type: :request do
     describe "Return trail succesfully" do
-      let!(:trail) {create(:trail)}
+      let!(:newTrail) { create(:trail) }
     
     before do
-      get '/v1/trails/#{trail.id}'
+      get `/v1/trails/#{newTrail.id}`
     end
 
     it 'returns the data in its correct structure' do
       expect_response = 
       {
-        "id"=>Trail.last.id,
-        "title"=>"title",
-        "description"=>"descriptionText",
-        "intensity"=>1,
-        "extra"=>"extra extra",
-        "duration"=>50,
-        "location"=> "Barkaby centrum"
+        "id"=>newTrail.id,
+        "title"=>newTrail.title,
+        "description"=>newTrail.description,
+        "intensity"=>newTrail.intensity,
+        "extra"=>newTrail.extra,
+        "duration"=>newTrail.duration,
+        "location"=>newTrail.location
       }
 
       expect(response_json).to eq expect_response
@@ -33,7 +33,7 @@ RSpec.describe V1::TrailsController, type: :request do
       get '/v1/trails/1'
     end
 
-    it "Returns no error status" do
+    it "Returns error status" do
       expect(response.status).to eq 400
     end
     
