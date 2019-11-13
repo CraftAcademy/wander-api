@@ -6,5 +6,11 @@ FactoryBot.define do
     extra {Faker::Lorem.sentence}
     duration {Faker::Number.between(from: 10, to: 300)}
     location {Faker::Address.city} 
+    
+    after(:create) do |trail|
+      trail.image.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'testimage.png')),
+      filename: 'testimage.png',
+      content_type: 'image/png')
+    end
   end
 end

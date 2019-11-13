@@ -10,6 +10,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'coveralls', require: false
 gem 'active_model_serializers'
 gem 'faker'
+gem 'aws-sdk-s3'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   gem 'rspec-rails'
