@@ -5,9 +5,12 @@ RSpec.describe 'Login functionality', type: :request do
   describe 'User log in using valid credentials' do
     
     it 'valid credentials return registered user' do
-      post '/auth/sign_in', params: { email: user.email,
-                                      password: user.password
-                                    }, headers: headers
+      post '/auth/sign_in', 
+      params: { 
+        email: user.email,
+        password: user.password
+      }, 
+      headers: headers
 
       expected_response = {
         'data' => {
@@ -24,9 +27,12 @@ RSpec.describe 'Login functionality', type: :request do
   describe 'User log in using invalid credentials' do
     
     before do
-      post '/auth/sign_in', params: { email: user.email,
-                                      password: 'wrong_password'
-                                    }, headers: headers
+      post '/auth/sign_in', 
+      params: { 
+        email: user.email,
+        password: 'wrong_password'
+      }, 
+      headers: headers
     end
 
     it 'invalid password returns error message' do
@@ -39,9 +45,12 @@ RSpec.describe 'Login functionality', type: :request do
     end
     
     before do
-      post '/auth/sign_in', params: { email: 'wrong@mail.com',
-                                      password: user.password
-                                    }, headers: headers
+      post '/auth/sign_in', 
+      params: { 
+        email: 'wrong@mail.com',
+        password: user.password
+      }, 
+      headers: headers
     end
 
     it 'invalid email returns error message' do
