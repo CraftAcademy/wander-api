@@ -25,6 +25,15 @@ class V1::TrailsController < ApplicationController
     end
   end 
 
+  def show
+    if Trail.exists?(id: params[:id])
+      trail = Trail.find(params[:id])
+      render json: trail, serializer: TrailsSerializer
+    else
+      render_error_message('There is no trail here go back.', 400 )
+  end
+end
+
   private
 
   def trail_params
