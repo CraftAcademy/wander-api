@@ -1,5 +1,7 @@
 Trail.destroy_all
 
+user = User.create(email: 'user@mail.com', password: 'password', name: 'Berg')
+
 7.times do 
   trail = Trail.create(
     title: Faker::Games::ElderScrolls.region, 
