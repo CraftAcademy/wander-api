@@ -15,11 +15,11 @@ RSpec.describe 'User Registration', type: :request do
     end
     
     it 'returns a user and token' do
-      expect(repsonse_json['status']).to eq 'success'
+      expect(response_json['status']).to eq 'success'
     end
 
     it 'reurns a positive status' do
-      expect(repsonse.status).to eq 200
+      expect(response.status).to eq 200
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe 'User Registration', type: :request do
     end
 
     it 'returns an error message' do
-      expect(repsonse_json['errors']['password_confirmation']).to eq ["doesn't match Password"]
+      expect(response_json['errors']['password_confirmation']).to eq ["doesn't match Password"]
     end
 
     it 'return error status' do
@@ -59,11 +59,11 @@ RSpec.describe 'User Registration', type: :request do
     end
 
     it 'returns an error message' do
-      expect(repsonse_json['errors']['email']).to eq ['is not an email']
+      expect(response_json['errors']['email']).to eq ['is not an email']
     end
 
     it 'returns an error status' do
-      expect(repsonse.status).to eq 422
+      expect(response.status).to eq 422
     end
   end
     
@@ -88,11 +88,11 @@ RSpec.describe 'User Registration', type: :request do
     end
 
     it 'returns an error message' do
-      expect(repsonse_json['errors']['email']).to eq ['has already been taken']
+      expect(response_json['errors']['email']).to eq ['has already been taken']
     end
 
     it 'returns an error status' do
-      expect(repsonse.status).to eq 422
+      expect(response.status).to eq 422
     end
   end
 end
