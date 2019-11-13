@@ -17,7 +17,7 @@ RSpec.describe 'Login functionality', type: :request do
         }
       }
 
-      expected(response_json).to eq expected_response
+      expect(response_json).to eq expected_response
     end
   end
   
