@@ -21,4 +21,36 @@ RSpec.describe 'Login functionality', type: :request do
     end
   end
   
+  describe 'User log in using invalid credentials' do
+    
+    before do
+      post '/auth/sign_in', params: { email: user.email,
+                                      password: 'wrong_password'
+                                    }, headers: headers
+    end
+
+    it 'invalid password returns error message' do
+      expect(response_json['errors'])
+        .to eq ['Invalid login credentials. Please try again.']
+    end
+
+    it 'invalid password returns error status' do
+      expect(response.status).to eq 401
+    end
+    
+    before do
+      post '/auth/sign_in', params: { email: 'wrong@mail.com',
+                                      password: user.password
+                                    }, headers: headers
+    end
+
+    it 'invalid email returns error message' do
+      expect(response_json['errors'])
+        .to eq ['Invalid login credentials. Please try again.']
+    end
+    
+    it 'invalid email returns error status' do
+      expect(response.status).to eq 401
+    end
+  end
 end
