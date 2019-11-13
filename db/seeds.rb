@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Trail.destroy_all
+
+7.times do 
+  trail = Trail.create(
+    title: Faker::Games::ElderScrolls.region, 
+    description: Faker::Lorem.sentence(word_count: 16), 
+    intensity: Faker::Number.between(from: 1, to: 5), 
+    extra: Faker::Lorem.sentence, 
+    duration: Faker::Number.between(from: 10, to: 300), 
+    location: Faker::Address.city, 
+  )
+  trail.image.attach(io: File.open('spec/fixtures/testimage.png'), filename: 'testimage.png')
+end
