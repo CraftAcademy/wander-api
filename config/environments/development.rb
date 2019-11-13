@@ -24,7 +24,7 @@ Rails.application.configure do
   end
 
  
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
  
   config.action_mailer.raise_delivery_errors = false
