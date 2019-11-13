@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'coveralls', require: false
 gem 'active_model_serializers'
+gem 'faker'
 
 group :development, :test do
   gem 'rspec-rails'
