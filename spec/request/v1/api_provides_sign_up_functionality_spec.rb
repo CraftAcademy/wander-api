@@ -4,7 +4,7 @@ RSpec.describe 'User Registration', type: :request do
   describe 'User inputs valid credentials' do
 
     before do
-      post '/v1/auth',
+      post '/auth',
         params: {
           name: 'User',
           email: 'user@mail.com',
@@ -26,7 +26,7 @@ RSpec.describe 'User Registration', type: :request do
   describe 'non-matching password confirmation' do
 
     before do
-      post '/v1/auth',
+      post '/auth',
         params: {
           name: 'User',
           email: 'user@mail.com',
@@ -48,7 +48,7 @@ RSpec.describe 'User Registration', type: :request do
   describe 'user inputs an invalid email' do
     
     before do
-      post '/v1/auth',
+      post '/auth',
         params: {
           name: 'user_2',
           email: 'user@mail',
@@ -77,7 +77,7 @@ RSpec.describe 'User Registration', type: :request do
               password_confirmation: 'password'
             )
 
-      post '/v1/auth',
+      post '/auth',
         params: {
           name: 'user_1',
           email: 'user@mail.com',
