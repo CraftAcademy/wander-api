@@ -4,7 +4,7 @@ Desktop application which based on what local you choose shows you possible trai
 Through the application you can choose your next place to wander and explore.
 
 ### Deloyment URL
-[Frontend Deployment](https://wanderproject.netlify.com/)
+[Frontend Deployment](https://wanderproject.netlify.com/)  
 [Backend Deployment](https://c-wander-api.herokuapp.com/)
 
 ## Getting Started
@@ -24,11 +24,11 @@ A step by step series of examples that tell you how to get a development env run
 Explain how to run the automated tests for this system
 
 ## Authors
-[Pia von Wachenfelt](https://github.com/piavW)
-[Luca Lobacher](https://github.com/lucamarial)
-[Jonas Masharqa](https://github.com/tazzex7)
-[David Izosimov](https://github.com/DavveDavve)
-[Alex Saxena](https://github.com/AlexSaxena)
+[Pia von Wachenfelt](https://github.com/piavW)  
+[Luca Lobacher](https://github.com/lucamarial)  
+[Jonas Masharqa](https://github.com/tazzex7)  
+[David Izosimov](https://github.com/DavveDavve)  
+[Alex Saxena](https://github.com/AlexSaxena)  
 
 ## Acknowledgments
 ### Inspiration
