@@ -105,6 +105,19 @@ GEM
       rails (>= 4.2.0, < 6.1)
     diff-lcs (1.3)
     docile (1.3.2)
+    elasticsearch (7.4.0)
+      elasticsearch-api (= 7.4.0)
+      elasticsearch-transport (= 7.4.0)
+    elasticsearch-api (7.4.0)
+      multi_json
+    elasticsearch-model (7.0.0)
+      activesupport (> 3)
+      elasticsearch (> 1)
+      hashie
+    elasticsearch-rails (7.0.0)
+    elasticsearch-transport (7.4.0)
+      faraday
+      multi_json
     erubi (1.9.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
@@ -113,9 +126,12 @@ GEM
       railties (>= 4.2.0)
     faker (2.7.0)
       i18n (>= 1.6, < 1.8)
+    faraday (0.17.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    hashie (4.0.0)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
@@ -140,6 +156,8 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.13.0)
     msgpack (1.3.1)
+    multi_json (1.14.1)
+    multipart-post (2.1.1)
     nio4r (2.5.2)
     nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
@@ -251,6 +269,8 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   coveralls
   devise_token_auth
+  elasticsearch-model
+  elasticsearch-rails
   factory_bot_rails
   faker
   jbuilder (~> 2.7)
