@@ -5,7 +5,9 @@ FactoryBot.define do
     intensity {Faker::Number.between(from: 1, to: 5)}
     extra {Faker::Lorem.sentence}
     duration {Faker::Number.between(from: 10, to: 300)}
-    location {Faker::Address.city} 
+    location {'Sörmlandsleden'} 
+    latitude {59.291968}
+    longitude {18.117070}
     
     after(:create) do |trail|
       trail.image.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'testimage.png')),

@@ -10,6 +10,8 @@ user = User.create(email: 'user@mail.com', password: 'password', name: 'Berg')
     extra: Faker::Lorem.sentence, 
     duration: Faker::Number.between(from: 10, to: 300), 
     location: Faker::Address.city, 
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude,
   )
   trail.image.attach(io: File.open('spec/fixtures/testimage.png'), filename: 'testimage.png')
 end

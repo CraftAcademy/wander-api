@@ -37,7 +37,7 @@ end
   private
 
   def trail_params
-    params.permit(:title, :description, :intensity, :extra, :duration, :location, keys: [:image])
+    params.permit(:title, :description, :intensity, :extra, :duration, :location, :latitude, :longitude, keys: [:image])
   end
 
   def render_error_message(message, status) 

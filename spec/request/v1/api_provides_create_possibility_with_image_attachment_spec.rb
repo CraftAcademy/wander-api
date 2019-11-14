@@ -5,12 +5,14 @@ RSpec.describe V1::TrailsController, type: :request do
     before do
       post '/v1/trails', 
       params: {
-        title: 'Roslagsbanan trail',
+        title: 'Sörmlandsleden trail',
         description: 'A nice trail to go for a short day walk when you are north of Sweden.',
         intensity: 1,
         extra: 'Watch out for the trains',
         duration: 90,
-        location: 'Roslagen, Stockholm',
+        location: 'Sörmlandsleden, Stockholm',
+        latitude: 59.291968,
+        longitude: 18.117070,
         image: {
           type: 'application/jpg',
           encoder: 'name=new_iphone.jpg;base64',
