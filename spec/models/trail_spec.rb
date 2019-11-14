@@ -8,6 +8,8 @@ RSpec.describe Trail, type: :model do
     it { is_expected.to have_db_column :duration }
     it { is_expected.to have_db_column :location }
     it { is_expected.to have_db_column :extra }
+    it { is_expected.to have_db_column :latitude }
+    it { is_expected.to have_db_column :longitude }
   end
   
   describe 'Validation' do
@@ -16,6 +18,8 @@ RSpec.describe Trail, type: :model do
     it { is_expected.to validate_presence_of :intensity }
     it { is_expected.to validate_presence_of :duration }
     it { is_expected.to validate_presence_of :location }
+    it { is_expected.to validate_presence_of :latitude }
+    it { is_expected.to validate_presence_of :longitude }
   end
 
   describe 'Factory' do

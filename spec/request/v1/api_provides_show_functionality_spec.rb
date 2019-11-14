@@ -1,5 +1,5 @@
 RSpec.describe V1::TrailsController, type: :request do
-    describe "Return trail succesfully" do
+    describe 'Return trail succesfully' do
       let!(:newTrail) { create(:trail) }
     
     before do
@@ -9,15 +9,16 @@ RSpec.describe V1::TrailsController, type: :request do
     it 'returns the data in its correct structure' do
       expect_response = 
       {
-        "id"=>newTrail.id,
-        "title"=>newTrail.title,
-        "description"=>newTrail.description,
-        "intensity"=>newTrail.intensity,
-        "extra"=>newTrail.extra,
-        "duration"=>newTrail.duration,
-        "location"=>newTrail.location,
-        "image"=>response_json['image']
-       
+        'id'=>newTrail.id,
+        'title'=>newTrail.title,
+        'description'=>newTrail.description,
+        'intensity'=>newTrail.intensity,
+        'extra'=>newTrail.extra,
+        'duration'=>newTrail.duration,
+        'location'=>newTrail.location,
+        'latitude'=>newTrail.latitude,
+        'longitude'=>newTrail.longitude,
+        'image'=>response_json['image']
       }
       expect(response_json).to eq expect_response
     end
@@ -27,19 +28,19 @@ RSpec.describe V1::TrailsController, type: :request do
     end
   end
 
-  describe "Returns no trail" do
+  describe 'Returns no trail' do
     let!(:trail) {create(:trail)}
 
     before do
       get '/v1/trails/1'
     end
 
-    it "Returns error status" do
+    it 'Returns error status' do
       expect(response.status).to eq 400
     end
     
     it 'Returns error message' do
-      expect(response_json['error_message']).to eq "There is no trail here go back."
+      expect(response_json['error_message']).to eq 'There is no trail here go back.'
     end
   end
 end
