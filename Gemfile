@@ -13,8 +13,7 @@ gem 'faker'
 gem 'aws-sdk-s3'
 gem 'rack-cors', require: 'rack/cors'
 gem 'devise_token_auth'
-gem 'elasticsearch-rails'
-gem 'elasticsearch-model'
+gem 'chewy'
 
 group :development, :test do
   gem 'rspec-rails'
