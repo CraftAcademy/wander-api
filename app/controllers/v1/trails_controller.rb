@@ -34,6 +34,15 @@ class V1::TrailsController < ApplicationController
   end
 end
 
+  def search
+    query = params[:search_trails].presence && params[:search_trails][:query]
+    
+    if query
+      @trails = Trail.search(query)
+    end
+  end
+  
+
   private
 
   def trail_params
