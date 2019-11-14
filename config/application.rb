@@ -12,6 +12,8 @@ require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
+require "elasticsearch/rails/instrumentation"
+require "elasticsearch/rails/tasks/import"
 
 Bundler.require(*Rails.groups)
 
