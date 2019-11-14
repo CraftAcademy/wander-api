@@ -1,9 +1,9 @@
-RSpec.describe V1::SearchController, type: :request do
+RSpec.describe V1::TrailsController, type: :request do
   describe 'Search action' do
     let!(:trails) { 3.times { create(:trail, location: 'Stockholm') } }
 
     before do
-      get 'search', to: 'search#Stockholm' #research method
+      get "/v1/trail/_search('Stockholm')"
     end
 
     it 'returns 3 search results' do
@@ -23,7 +23,7 @@ RSpec.describe V1::SearchController, type: :request do
     let!(:trail) { create(:trail) }
 
     before do
-      get 'search', to: 'search#'
+      get "/v1/trail/_search('')"
     end
 
     it 'gives error message' do
