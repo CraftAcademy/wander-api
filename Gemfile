@@ -13,7 +13,9 @@ gem 'faker'
 gem 'aws-sdk-s3'
 gem 'rack-cors', require: 'rack/cors'
 gem 'devise_token_auth'
-gem 'elasticsearch-model'
+gem 'elasticsearch-model', '~> 0.1.8'
+gem 'elasticsearch-api',  '~> 1.0.15'
+gem 'elasticsearch-transport',  '~> 1.0.15'
 
 group :development, :test do
   gem 'rspec-rails'
