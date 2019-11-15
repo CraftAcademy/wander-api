@@ -22,6 +22,10 @@ RSpec.describe Trail, type: :model do
     it { is_expected.to validate_presence_of :longitude }
   end
 
+  describe 'Association' do
+    it { is_expected.to belong_to :user }
+  end
+
   describe 'Factory' do
     it 'should have valid Factory' do
       expect(create(:trail)).to be_valid

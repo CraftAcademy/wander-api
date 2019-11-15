@@ -48,4 +48,8 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'Association' do
+    it { is_expected.to have_many :trail }
+  end
 end
