@@ -13,6 +13,9 @@ gem 'faker'
 gem 'aws-sdk-s3'
 gem 'rack-cors', require: 'rack/cors'
 gem 'devise_token_auth'
+gem 'awesome_print'
+gem 'elasticsearch-model', git: 'git://github.com/elastic/elasticsearch-rails.git', branch: 'master'
+gem 'elasticsearch-rails', git: 'git://github.com/elastic/elasticsearch-rails.git', branch: 'master'
 
 group :development, :test do
   gem 'rspec-rails'
