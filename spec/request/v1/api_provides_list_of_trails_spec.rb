@@ -1,6 +1,7 @@
 RSpec.describe V1::TrailsController, type: :request do
   describe 'displays a list of trails' do
-    let!(:trails) { 2.times { create(:trail) } }
+    let!(:trails) { create(:trail) }
+    let!(:trails) { create(:trail) }
     
     before do
       get '/v1/trails'
