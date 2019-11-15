@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2019_11_15_131326) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "latitude"
-    t.float "longitude"
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_trails_on_user_id"
   end
