@@ -1,6 +1,7 @@
-RSpec.describe V1::TrailsController, type: :request do
+RSpec.describe 'Provides create & image attachment possibility', type: :request do
   describe 'Trail can be created and have image attached' do
-    let(:headers) {{ HTTP_ACCEPT: 'application/json' }}
+    let(:user) { create(:user) }
+    let(:headers) { { HTTP_ACCEPT: "application/json" } }
 
     before do
       post '/v1/trails', 
@@ -24,6 +25,7 @@ RSpec.describe V1::TrailsController, type: :request do
     end
 
     it 'returns a 200 response' do
+      binding.pry
       expect(response.status).to eq 200
     end
 
