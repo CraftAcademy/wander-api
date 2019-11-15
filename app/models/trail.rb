@@ -7,7 +7,7 @@ class Trail < ApplicationRecord
   include Elasticsearch::Model 
   include Elasticsearch::Model::Callbacks
 
-  include_name Rails.application.class.parent_name.underscore
+  include Rails.application.class.module_parent_name.underscore
   document_type self.name.downcase
 
   settings index: { number_of_shards: 1 } do 
