@@ -39,27 +39,6 @@ class Trail < ApplicationRecord
             description: {},
             location: {},
           }
-        },
-        suggest: {
-          text: query,
-          title: {
-            term: {
-              size: 1,
-              field: :title
-            }
-          },
-          description: {
-            term: {
-              size: 1,
-              field: :description
-            }
-          },
-          location: {
-            term: {
-              size: 1,
-              field: :location
-            }
-          }
         }
     }
   )
