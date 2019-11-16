@@ -8,6 +8,7 @@ FactoryBot.define do
     location {'Sörmlandsleden'} 
     latitude {59.291968}
     longitude {18.117070}
+    continent {'Asia'} 
     
     association :user, factory: :user
 
