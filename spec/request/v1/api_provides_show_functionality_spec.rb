@@ -18,6 +18,7 @@ RSpec.describe V1::TrailsController, type: :request do
         'location'=>newTrail.location,
         'latitude'=>newTrail.latitude,
         'longitude'=>newTrail.longitude,
+        'continent'=>newTrail.continent,
         'image'=>response_json['image']
       }
       expect(response_json).to eq expect_response
