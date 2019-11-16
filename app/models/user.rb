@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :trail
+  has_many :bookmarks
+  has_many :trails, through: :bookmarks
 end
