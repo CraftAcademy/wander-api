@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :trail
   has_many :bookmarks
-  has_many :trails, through: :bookmarks
+  has_many :trails
+  has_many :trail_bookmarks, through: :trails, source: :bookmarks
 end
