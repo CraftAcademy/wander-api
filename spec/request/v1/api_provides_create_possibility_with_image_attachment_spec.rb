@@ -1,6 +1,8 @@
-RSpec.describe V1::TrailsController, type: :request do
+RSpec.describe 'Provides create & image attachment possibility', type: :request do
   describe 'Trail can be created and have image attached' do
-    let(:headers) {{ HTTP_ACCEPT: 'application/json' }}
+    let(:newuser) { create(:user) }
+    let(:credentials) { newuser.create_new_auth_token}
+    let(:headers) {{ HTTP_ACCEPT: "application/json" }.merge!(credentials)}
 
     before do
       post '/v1/trails', 
@@ -18,7 +20,8 @@ RSpec.describe V1::TrailsController, type: :request do
           encoder: 'name=new_iphone.jpg;base64',
           data: 'iVBORw0KGgoAAAANSUhEUgAABjAAAAOmCAYAAABFYNwHAAAgAElEQVR4XuzdB3gU1cLG8Te9EEgISQi9I71KFbBXbFixN6zfvSiIjSuKInoVFOyIDcWuiKiIol4Q6SBVOtI7IYSWBkm',
           extension: 'jpg'
-        }
+        },
+        user_id: newuser.id
       },
       headers: headers
     end

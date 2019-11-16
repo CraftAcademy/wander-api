@@ -9,6 +9,8 @@ FactoryBot.define do
     latitude {59.291968}
     longitude {18.117070}
     
+    association :user, factory: :user
+
     after(:create) do |trail|
       trail.image.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'testimage.png')),
       filename: 'testimage.png',

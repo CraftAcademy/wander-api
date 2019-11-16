@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_100713) do
+ActiveRecord::Schema.define(version: 2019_11_15_131326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,10 @@ ActiveRecord::Schema.define(version: 2019_11_14_100713) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "latitude"
-    t.float "longitude"
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_trails_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,4 +83,5 @@ ActiveRecord::Schema.define(version: 2019_11_14_100713) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "trails", "users"
 end

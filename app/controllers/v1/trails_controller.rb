@@ -9,8 +9,8 @@ class V1::TrailsController < ApplicationController
   end
 
   def create
-    @trail = Trail.create(trail_params)
- 
+    @trail = Trail.create(trail_params.merge!(user: current_user))
+
     if @trail.persisted?
       attach_image
       if @trail.persisted? && @trail.image.attached?
