@@ -31,7 +31,7 @@ RSpec.describe 'API provides bookmark functionality', type: :request do
     end
    
     it 'successful retrieve bookmark' do
-      expect(response_json[0]).to include {trail.title}
+      expect(response_json).to include {trail.title}
     end
 
     it 'gives status 200' do 
