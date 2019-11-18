@@ -1,5 +1,6 @@
 RSpec.describe 'API provides bookmark functionality', type: :request do 
   let!(:trail) { create(:trail) } 
+  let!(:trail_2) { create(:trail) } 
   let(:user) { create(:user) }
   let(:credentials) { user.create_new_auth_token}
   let(:headers) {{ HTTP_ACCEPT: "application/json" }.merge!(credentials)}
@@ -41,6 +42,7 @@ RSpec.describe 'API provides bookmark functionality', type: :request do
   describe 'user can remove a bookmark' do 
     before do
       user.bookmarked_trails << trail
+      user.bookmarked_trails << trail_2
       delete "/v1/bookmarks/#{trail.id}",
       params: {
         trail_id: trail.id
@@ -57,7 +59,7 @@ RSpec.describe 'API provides bookmark functionality', type: :request do
     end
 
     it 'user bookmarks are empty' do 
-      expect(user.bookmarked_trails).to eq []
+      expect(response_json).not_to include {trail.title}
     end
   end
 end

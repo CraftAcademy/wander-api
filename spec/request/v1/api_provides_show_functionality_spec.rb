@@ -1,4 +1,4 @@
-RSpec.describe V1::TrailsController, type: :request do
+RSpec.describe 'API provides show functionality', type: :request do
     describe 'Return trail succesfully' do
       let!(:newTrail) { create(:trail) }
     
@@ -19,6 +19,7 @@ RSpec.describe V1::TrailsController, type: :request do
         'latitude'=>newTrail.latitude,
         'longitude'=>newTrail.longitude,
         'continent'=>newTrail.continent,
+        'user_id'=>newTrail.user_id,
         'image'=>response_json['image']
       }
       expect(response_json).to eq expect_response
