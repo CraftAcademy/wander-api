@@ -1,4 +1,4 @@
 class Bookmark < ApplicationRecord
-  belongs_to :user
-  belongs_to :trail
+  belongs_to :user, dependent: :destroy
+  has_many :trails
 end

@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :trail
-  has_many :bookmarks
   has_many :trails
-  has_many :trail_bookmarks, through: :trails, source: :bookmarks
+  has_many :bookmarks
 end
