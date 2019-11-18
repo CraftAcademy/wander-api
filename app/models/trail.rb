@@ -4,5 +4,4 @@ class Trail < ApplicationRecord
   validates :description, length: { minimum: 15 }
   has_one_attached :image
   belongs_to :user
-
 end
