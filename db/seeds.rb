@@ -13,6 +13,7 @@ user = User.create(email: 'user@mail.com', password: 'password', name: 'Berg')
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
     continent: 'Asia',
+    user_id: 1
   )
   trail.image.attach(io: File.open('spec/fixtures/testimage.png'), filename: 'testimage.png')
 end

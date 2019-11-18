@@ -50,6 +50,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'Association' do
-    it { is_expected.to have_many :trail }
+    it { is_expected.to have_many :trails }
   end
 end
