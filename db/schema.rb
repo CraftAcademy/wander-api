@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_141203) do
+ActiveRecord::Schema.define(version: 2019_11_18_104442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,18 @@ ActiveRecord::Schema.define(version: 2019_11_16_141203) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "trail_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["trail_id"], name: "index_bookmarks_on_trail_id"
+    t.bigint "users_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+    t.index ["users_id"], name: "index_bookmarks_on_users_id"
+  end
+
+  create_table "bookmarks_trails", id: false, force: :cascade do |t|
+    t.bigint "trail_id", null: false
+    t.bigint "bookmark_id", null: false
+    t.index ["bookmark_id", "trail_id"], name: "index_bookmarks_trails_on_bookmark_id_and_trail_id"
+    t.index ["trail_id", "bookmark_id"], name: "index_bookmarks_trails_on_trail_id_and_bookmark_id"
   end
 
   create_table "trails", force: :cascade do |t|
@@ -58,6 +65,8 @@ ActiveRecord::Schema.define(version: 2019_11_16_141203) do
     t.float "longitude"
     t.bigint "user_id"
     t.string "continent"
+    t.bigint "bookmark_id"
+    t.index ["bookmark_id"], name: "index_trails_on_bookmark_id"
     t.index ["user_id"], name: "index_trails_on_user_id"
   end
 
@@ -85,6 +94,8 @@ ActiveRecord::Schema.define(version: 2019_11_16_141203) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.bigint "bookmark_id"
+    t.index ["bookmark_id"], name: "index_users_on_bookmark_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
@@ -93,5 +104,7 @@ ActiveRecord::Schema.define(version: 2019_11_16_141203) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookmarks", "users", column: "users_id"
+  add_foreign_key "trails", "bookmarks"
   add_foreign_key "trails", "users"
 end
