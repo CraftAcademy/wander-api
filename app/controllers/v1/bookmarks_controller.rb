@@ -4,7 +4,9 @@ class V1::BookmarksController < ApplicationController
 
   def index
     if current_user.bookmarked_trails.exists?
-    render json: current_user.bookmarked_trails, each_serializer: TrailsSerializer
+      render json: {
+        data: ActiveModel::Serializer::CollectionSerializer.new(current_user.bookmarked_trails, serializer: TrailsSerializer) 
+      }
     else 
       render_error_message('No bookmarks added.', 204)
     end
