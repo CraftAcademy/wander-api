@@ -6,10 +6,7 @@ FactoryBot.define do
     extra {Faker::Lorem.sentence}
     duration {Faker::Number.between(from: 10, to: 300)}
     location {'Sörmlandsleden'} 
-    latitude {59.291968}
-    longitude {18.117070}
     continent {'Asia'} 
-    
     association :user, factory: :user
 
     after(:create) do |trail|
