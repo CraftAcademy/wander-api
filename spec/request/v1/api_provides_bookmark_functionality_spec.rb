@@ -27,7 +27,7 @@ RSpec.describe 'API provides bookmark functionality', type: :request do
     before do
       user.bookmarked_trails << trail
       get '/v1/bookmarks/',
-      headers: headers
+        headers: headers
     end
    
     it 'successful retrieve bookmark' do
@@ -44,10 +44,10 @@ RSpec.describe 'API provides bookmark functionality', type: :request do
       user.bookmarked_trails << trail
       user.bookmarked_trails << trail_2
       delete "/v1/bookmarks/#{trail.id}",
-      params: {
-        trail_id: trail.id
-      },
-      headers: headers
+        params: {
+          trail_id: trail.id
+        },
+        headers: headers
     end
 
     it 'successfully remove bookmark' do 
