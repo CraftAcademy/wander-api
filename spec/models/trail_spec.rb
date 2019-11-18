@@ -22,6 +22,7 @@ RSpec.describe Trail, type: :model do
     it { is_expected.to validate_presence_of :latitude }
     it { is_expected.to validate_presence_of :longitude }
     it { is_expected.to validate_presence_of :continent }
+    it { is_expected.to validate_presence_of :trails_coordinates }
   end
 
   describe 'Association' do
