@@ -12,7 +12,8 @@ user = User.create(email: 'user@mail.com', password: 'password', name: 'Berg')
     intensity: Faker::Number.between(from: 1, to: 5), 
     extra: Faker::Lorem.sentence, 
     duration: Faker::Number.between(from: 10, to: 300), 
-    location: Faker::Address.city, 
+    city: Faker::Address.city, 
+    country: 'Sweden',
     continent: 'Asia',
     user_id: user.id
   )

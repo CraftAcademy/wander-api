@@ -12,7 +12,8 @@ RSpec.describe 'Can create trail with multiple coordinates', type: :request do
         intensity: 1,
         extra: 'Watch out for the trains',
         duration: 90,
-        location: 'Sörmlandsleden, Stockholm',
+        city: 'Sörmland',
+        country: 'Sweden',
         continent: 'Europe',
         image: [{
           type: 'application/jpg',
