@@ -1,4 +1,7 @@
+Bookmark.destroy_all
+Coordinates.destroy_all
 Trail.destroy_all
+User.destroy_all
 
 user = User.create(email: 'user@mail.com', password: 'password', name: 'Berg')
 
@@ -10,9 +13,8 @@ user = User.create(email: 'user@mail.com', password: 'password', name: 'Berg')
     extra: Faker::Lorem.sentence, 
     duration: Faker::Number.between(from: 10, to: 300), 
     location: Faker::Address.city, 
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
     continent: 'Asia',
+    coordinates: [{latitude: 59.291968, longitude: 18.117070}, {latitude: 59.291968, longitude: 18.117070}],
     user_id: 1
   )
   trail.image.attach(io: File.open('spec/fixtures/testimage.png'), filename: 'testimage.png')

@@ -21,29 +21,23 @@ RSpec.describe 'Can create trail with multiple coordinates', type: :request do
           extension: 'jpg'
         },
         user_id: newuser.id,
-        coordinates: {latitude: 59.291968, longitude: 18.117070}#{latitude: 59.291968, longitude: 18.117070} 
+        coordinates: [{latitude: 59.291968, longitude: 18.117070}, {latitude: 59.291968, longitude: 18.117070}]
       },
       headers: headers
     end
 
     it 'returns a 200 response' do
       expect(response.status).to eq 200
-    end
+   # end
 
-    it 'returns successful message' do
+    #it 'returns successful message' do
       expect(response_json['message']).to eq 'Trail was successfully created'
+    #end
+
+    #it 'contains coordinates' do 
+
+     expect(response_json['data']['coordinates'][0]['latitude']).to eq 59.291968
+     expect(response_json['data']['coordinates'][0]['longitude']).to eq 18.117070
     end
   end 
-
-  describe 'can retrieve coordinates as an array with hashes' do
-    let(:newtrail) { create(:trail) }
-    before do
-      get '/v1/trails', 
-        headers: headers
-    end
-
-    it 'contains coordinates' do 
-     expect(response_json).to include 'latitude: 59.291968, longitude: 18.117070'
-    end
-  end
 end
