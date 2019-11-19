@@ -8,7 +8,7 @@ class V1::BookmarksController < ApplicationController
         data: ActiveModel::Serializer::CollectionSerializer.new(current_user.bookmarked_trails, serializer: TrailsSerializer) 
       }
     else 
-      render_error_message('No bookmarks added.', 204)
+      render_error_message('No bookmarks added.', 400)
     end
   end
 

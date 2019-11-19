@@ -12,7 +12,8 @@ RSpec.describe 'Provides create & image attachment possibility', type: :request 
         intensity: 1,
         extra: 'Watch out for the trains',
         duration: 90,
-        location: 'Sörmlandsleden, Stockholm',
+        city: 'Sörmland',
+        country: 'Sweden',
         continent: 'Asia',
         coordinates: [{latitude: 59.291968, longitude: 18.117070}],
         image: [{
@@ -45,7 +46,8 @@ RSpec.describe 'Provides create & image attachment possibility', type: :request 
         intensity: 1,
         extra: 'Watch out for the trains',
         duration: 90,
-        location: 'Roslagen, Stockholm',
+        city: 'Roslagen',
+        country: 'Sweden',
         user_id: newuser.id
       }, 
       headers: headers
@@ -69,7 +71,8 @@ RSpec.describe 'Provides create & image attachment possibility', type: :request 
         intensity: 1,
         extra: 'extra extra',
         duration: nil,
-        location: 'Roslagen, Stockholm',
+        city: 'Roslagen',
+        country: 'Sweden',
         user_id: newuser.id
       },
       headers: headers
