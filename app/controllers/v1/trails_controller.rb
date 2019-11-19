@@ -11,13 +11,15 @@ class V1::TrailsController < ApplicationController
   end
 
   def create
-    @trail = Trail.create(trail_params.merge!(user: current_user))
-      #Coordinates.create(trail_params)
-    if @trail.persisted?
+    @trail = Trail.new(trail_params.merge!(user: current_user))
+    params[:coordinates].each do |coordinate|
+      @trail.coordinates.new(latitude: coordinate[:latitude], longitude: coordinate[:longitude])
+    end
+    if @trail.save
       attach_image
       if @trail.persisted? && @trail.image.attached?
         render json: {
-          data: ActiveModel::Serializer::CollectionSerializer.new(trail, serializer: TrailsSerializer),
+          data: TrailsSerializer.new(@trail),
           message: 'Trail was successfully created'
         }
       else
@@ -34,7 +36,7 @@ class V1::TrailsController < ApplicationController
     if Trail.exists?(id: params[:id])
       trail = Trail.find(params[:id])
       render json: {
-        data: ActiveModel::Serializer::CollectionSerializer.new(trail, serializer: TrailsSerializer)
+        data: ActiveModel::Serializer.new(trail, serializer: TrailsSerializer)
       }
     else
       render_error_message('There is no trail here go back.', 400 )
@@ -44,7 +46,7 @@ end
   private
 
   def trail_params
-    params.permit(:title, :description, :intensity, :extra, :duration, :location, :continent, :coordinates, keys: [:image])
+    params.permit(:title, :description, :intensity, :extra, :duration, :location, :continent, keys: [:image])
   end
 
   def render_error_message(message, status) 
