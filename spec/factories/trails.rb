@@ -5,10 +5,9 @@ FactoryBot.define do
     intensity {Faker::Number.between(from: 1, to: 5)}
     extra {Faker::Lorem.sentence}
     duration {Faker::Number.between(from: 10, to: 300)}
-    location {'Sörmlandsleden'} 
+    city {'Sörmland'} 
+    country {'Sweden'}
     continent {'Asia'} 
-    # association :coordinates, factory: :coordinate
-    # coordinates { create(:coordinate) }
     association :user, factory: :user
 
     after(:create) do |trail|

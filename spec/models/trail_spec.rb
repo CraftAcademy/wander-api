@@ -6,7 +6,8 @@ RSpec.describe Trail, type: :model do
     it { is_expected.to have_db_column :description }
     it { is_expected.to have_db_column :intensity }
     it { is_expected.to have_db_column :duration }
-    it { is_expected.to have_db_column :location }
+    it { is_expected.to have_db_column :country }
+    it { is_expected.to have_db_column :city }
     it { is_expected.to have_db_column :extra }
     it { is_expected.to have_db_column :continent }
   end
@@ -16,7 +17,8 @@ RSpec.describe Trail, type: :model do
     it { is_expected.to validate_presence_of :description }
     it { is_expected.to validate_presence_of :intensity }
     it { is_expected.to validate_presence_of :duration }
-    it { is_expected.to validate_presence_of :location }
+    it { is_expected.to validate_presence_of :country }
+    it { is_expected.to validate_presence_of :city }
     it { is_expected.to validate_presence_of :continent }
   end
 
