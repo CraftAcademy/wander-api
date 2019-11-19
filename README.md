@@ -26,7 +26,7 @@ Explain how to run the automated tests for this system
 ## Authors
 [Pia von Wachenfelt](https://github.com/piavW)  
 [Luca Lobacher](https://github.com/lucamarial)  
-[Jonas Masharqa](https://github.com/tazzex7)  
+[Jonas Masharqa](https://github.com/jonas-masharqa)  
 [David Izosimov](https://github.com/DavveDavve)  
 [Alex Saxena](https://github.com/AlexSaxena)  
 
