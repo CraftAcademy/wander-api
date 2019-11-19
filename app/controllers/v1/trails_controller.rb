@@ -5,15 +5,17 @@ class V1::TrailsController < ApplicationController
       render_error_message('No trails here, turn around.', 400)
     else
       render json: {
-        data: ActiveModel::Serializer::CollectionSerializer.new(trail, serializer: TrailsSerializer)
+        data: ActiveModel::Serializer::CollectionSerializer.new(trails, serializer: TrailsSerializer)
       }
     end
   end
 
   def create
     @trail = Trail.new(trail_params.merge!(user: current_user))
-    params[:coordinates].each do |coordinate|
-      @trail.coordinates.new(latitude: coordinate[:latitude], longitude: coordinate[:longitude])
+    if params[:coordinates].present?
+      params[:coordinates].each do |coordinate|
+        @trail.coordinates.new(latitude: coordinate[:latitude], longitude: coordinate[:longitude])
+      end
     end
     if @trail.save
       attach_image
@@ -36,7 +38,7 @@ class V1::TrailsController < ApplicationController
     if Trail.exists?(id: params[:id])
       trail = Trail.find(params[:id])
       render json: {
-        data: ActiveModel::Serializer.new(trail, serializer: TrailsSerializer)
+        data: TrailsSerializer.new(trail)
       }
     else
       render_error_message('There is no trail here go back.', 400 )

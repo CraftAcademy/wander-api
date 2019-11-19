@@ -14,7 +14,7 @@ RSpec.describe 'Provides create & image attachment possibility', type: :request 
         duration: 90,
         location: 'Sörmlandsleden, Stockholm',
         continent: 'Asia',
-        coordinates: {latitude: 59.291968, longitude: 18.117070},
+        coordinates: [{latitude: 59.291968, longitude: 18.117070}],
         image: {
           type: 'application/jpg',
           encoder: 'name=new_iphone.jpg;base64',

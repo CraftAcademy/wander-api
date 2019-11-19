@@ -9,4 +9,11 @@ RSpec.describe Coordinate, type: :model do
   describe "Relations" do
     it { is_expected.to belong_to :trail }
   end
+
+  describe 'Factory' do
+    it 'should have valid Factory' do
+      expect(create(:coordinate)).to be_valid
+    end
+  end 
+
 end

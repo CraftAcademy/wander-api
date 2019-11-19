@@ -8,7 +8,7 @@ RSpec.describe 'API provides show functionality', type: :request do
 
     it 'returns the data in its correct structure' do
       expect_response = 
-      {
+      {"data" => {
         'id'=>newTrail.id,
         'title'=>newTrail.title,
         'description'=>newTrail.description,
@@ -18,8 +18,9 @@ RSpec.describe 'API provides show functionality', type: :request do
         'location'=>newTrail.location,
         'continent'=>newTrail.continent,
         'user_id'=>newTrail.user_id,
-        'coordinates'=>newTrail.coordinates,
+        'coordinates'=>[],
         'image'=>response_json['image']
+      }
       }
       expect(response_json).to eq expect_response
     end
