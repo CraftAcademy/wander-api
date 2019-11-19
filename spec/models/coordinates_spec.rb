@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Coordinates, type: :model do
+RSpec.describe Coordinate, type: :model do
   describe 'Database table' do
     it { is_expected.to have_db_column :latitude }
     it { is_expected.to have_db_column :longitude }
