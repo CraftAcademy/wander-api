@@ -7,15 +7,15 @@ RSpec.describe V1::TrailsController, type: :request do
     end
    
     it 'returns 2 trails' do
-      expect(response_json['data'].count).to eq 2
+      expect(response_json.count).to eq 2
     end 
 
     it 'trail has title' do
-      expect(response_json['data'].first['title']).to eq Trail.first.title
+      expect(response_json.first['title']).to eq Trail.first.title
     end
 
     it 'trail has image' do
-      expect(response_json['data'].first).to include 'image'
+      expect(response_json.first).to include 'image'
     end
   end
 

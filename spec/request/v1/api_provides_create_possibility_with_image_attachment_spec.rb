@@ -15,12 +15,12 @@ RSpec.describe 'Provides create & image attachment possibility', type: :request 
         location: 'Sörmlandsleden, Stockholm',
         continent: 'Asia',
         coordinates: [{latitude: 59.291968, longitude: 18.117070}],
-        image: {
+        image: [{
           type: 'application/jpg',
           encoder: 'name=new_iphone.jpg;base64',
           data: 'iVBORw0KGgoAAAANSUhEUgAABjAAAAOmCAYAAABFYNwHAAAgAElEQVR4XuzdB3gU1cLG8Te9EEgISQi9I71KFbBXbFixN6zfvSiIjSuKInoVFOyIDcWuiKiIol4Q6SBVOtI7IYSWBkm',
           extension: 'jpg'
-        },
+        }],
         user_id: newuser.id
       },
       headers: headers
