@@ -1,20 +1,29 @@
 class V1::TrailsController < ApplicationController
+  before_action :authenticate_user!, only: %i[create destroy]
+
   def index 
     trails = Trail.all
     if trails.empty?
       render_error_message('No trails here, turn around.', 400)
     else
-      render json: trails, each_serializer: TrailsSerializer
+      render json: ActiveModel::Serializer::CollectionSerializer.new(trails, serializer: TrailsSerializer)
     end
   end
 
   def create
-    @trail = Trail.create(trail_params.merge!(user: current_user))
-
-    if @trail.persisted?
+    @trail = Trail.new(trail_params.merge!(user: current_user))
+    if params[:coordinates].present?
+      params[:coordinates].each do |coordinate|
+        @trail.coordinates.new(latitude: coordinate[:latitude], longitude: coordinate[:longitude])
+      end
+    end
+    if @trail.save
       attach_image
       if @trail.persisted? && @trail.image.attached?
-        render json: {message: 'Trail was successfully created'}
+        render json: {
+          data: TrailsSerializer.new(@trail),
+          message: 'Trail was successfully created'
+        }
       else
         render_error_message('Image attachment was unsuccessful', 400)
       end
@@ -37,7 +46,7 @@ end
   private
 
   def trail_params
-    params.permit(:title, :description, :intensity, :extra, :duration, :location, :latitude, :longitude, :continent, keys: [:image])
+    params.permit(:title, :description, :intensity, :extra, :duration, :location, :continent)
   end
 
   def render_error_message(message, status) 
@@ -46,7 +55,7 @@ end
 
   def attach_image
     if params['image'] && params['image'].present?
-      DecodeService.attach_image(params['image'], @trail.image)
+      DecodeService.attach_image(params['image'][0], @trail.image)
     end
   end
 end

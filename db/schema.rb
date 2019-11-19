@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_123617) do
+ActiveRecord::Schema.define(version: 2019_11_19_102853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2019_11_18_123617) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
+  create_table "coordinates", force: :cascade do |t|
+    t.bigint "trail_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.index ["trail_id"], name: "index_coordinates_on_trail_id"
+  end
+
   create_table "trails", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -54,8 +63,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_123617) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "latitude", null: false
-    t.float "longitude", null: false
     t.bigint "user_id"
     t.string "continent"
     t.index ["user_id"], name: "index_trails_on_user_id"
@@ -95,5 +102,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_123617) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "trails"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "coordinates", "trails"
   add_foreign_key "trails", "users"
 end
