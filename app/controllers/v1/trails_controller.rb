@@ -1,12 +1,17 @@
 class V1::TrailsController < ApplicationController
-  before_action :authenticate_user!, only: %i[create destroy]
+  before_action :authenticate_user!, only: %i[create]
 
   def index 
-    trails = Trail.all
-    if trails.empty?
-      render_error_message('No trails here, turn around.', 400)
-    else
+    if params[:continent].present?
+      trails = Trail.where(continent: params[:continent])
       render json: ActiveModel::Serializer::CollectionSerializer.new(trails, serializer: TrailsSerializer)
+    else
+    trails = Trail.all
+      if trails.empty?
+        render_error_message('No trails here, turn around.', 400)
+      else
+        render json: ActiveModel::Serializer::CollectionSerializer.new(trails, serializer: TrailsSerializer)
+      end
     end
   end
 
