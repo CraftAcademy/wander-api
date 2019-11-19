@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_202255) do
+ActiveRecord::Schema.define(version: 2019_11_19_085335) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -48,7 +47,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_202255) do
 
   create_table "trail_coordinates", force: :cascade do |t|
     t.bigint "trail_id", null: false
-    t.hstore "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["trail_id"], name: "index_trail_coordinates_on_trail_id"
