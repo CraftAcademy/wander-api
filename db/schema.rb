@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_090824) do
+ActiveRecord::Schema.define(version: 2019_11_19_102853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 2019_11_19_090824) do
     t.bigint "trail_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.index ["trail_id"], name: "index_coordinates_on_trail_id"
   end
 
