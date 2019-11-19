@@ -10,7 +10,7 @@ class V1::TrailsController < ApplicationController
 
   def create
     @trail = Trail.create(trail_params.merge!(user: current_user))
-
+      Coordinates.create(trail_params)
     if @trail.persisted?
       attach_image
       if @trail.persisted? && @trail.image.attached?
@@ -37,7 +37,7 @@ end
   private
 
   def trail_params
-    params.permit(:title, :description, :intensity, :extra, :duration, :location, :continent, :trail_coordinates, keys: [:image])
+    params.permit(:title, :description, :intensity, :extra, :duration, :location, :continent, :coordinates, keys: [:image])
   end
 
   def render_error_message(message, status) 
