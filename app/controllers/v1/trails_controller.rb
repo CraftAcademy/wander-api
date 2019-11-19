@@ -1,12 +1,12 @@
 class V1::TrailsController < ApplicationController
+  before_action :authenticate_user!, only: %i[create destroy]
+
   def index 
     trails = Trail.all
     if trails.empty?
       render_error_message('No trails here, turn around.', 400)
     else
-      render json: {
-        data: ActiveModel::Serializer::CollectionSerializer.new(trails, serializer: TrailsSerializer)
-      }
+      render json: ActiveModel::Serializer::CollectionSerializer.new(trails, serializer: TrailsSerializer)
     end
   end
 
@@ -37,9 +37,7 @@ class V1::TrailsController < ApplicationController
   def show
     if Trail.exists?(id: params[:id])
       trail = Trail.find(params[:id])
-      render json: {
-        data: TrailsSerializer.new(trail)
-      }
+      render json: trail, serializer: TrailsSerializer
     else
       render_error_message('There is no trail here go back.', 400 )
   end
@@ -48,7 +46,7 @@ end
   private
 
   def trail_params
-    params.permit(:title, :description, :intensity, :extra, :duration, :location, :continent, keys: [:image])
+    params.permit(:title, :description, :intensity, :extra, :duration, :location, :continent)
   end
 
   def render_error_message(message, status) 
@@ -57,7 +55,7 @@ end
 
   def attach_image
     if params['image'] && params['image'].present?
-      DecodeService.attach_image(params['image'], @trail.image)
+      DecodeService.attach_image(params['image'][0], @trail.image)
     end
   end
 end
