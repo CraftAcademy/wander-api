@@ -4,17 +4,22 @@ class V1::TrailsController < ApplicationController
     if trails.empty?
       render_error_message('No trails here, turn around.', 400)
     else
-      render json: trails, each_serializer: TrailsSerializer
+      render json: {
+        data: ActiveModel::Serializer::CollectionSerializer.new(trail, serializer: TrailsSerializer)
+      }
     end
   end
 
   def create
     @trail = Trail.create(trail_params.merge!(user: current_user))
-      Coordinates.create(trail_params)
+      #Coordinates.create(trail_params)
     if @trail.persisted?
       attach_image
       if @trail.persisted? && @trail.image.attached?
-        render json: {message: 'Trail was successfully created'}
+        render json: {
+          data: ActiveModel::Serializer::CollectionSerializer.new(trail, serializer: TrailsSerializer),
+          message: 'Trail was successfully created'
+        }
       else
         render_error_message('Image attachment was unsuccessful', 400)
       end
@@ -28,7 +33,9 @@ class V1::TrailsController < ApplicationController
   def show
     if Trail.exists?(id: params[:id])
       trail = Trail.find(params[:id])
-      render json: trail, serializer: TrailsSerializer
+      render json: {
+        data: ActiveModel::Serializer::CollectionSerializer.new(trail, serializer: TrailsSerializer)
+      }
     else
       render_error_message('There is no trail here go back.', 400 )
   end
