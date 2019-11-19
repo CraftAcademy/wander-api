@@ -13,8 +13,6 @@ RSpec.describe 'Can create trail with multiple coordinates', type: :request do
         extra: 'Watch out for the trains',
         duration: 90,
         location: 'Sörmlandsleden, Stockholm',
-        latitude: 59.291968,
-        longitude: 18.117070,
         continent: 'Europe',
         image: {
           type: 'application/jpg',
@@ -23,7 +21,7 @@ RSpec.describe 'Can create trail with multiple coordinates', type: :request do
           extension: 'jpg'
         },
         user_id: newuser.id,
-        trail_coordinates: { data: {latitude: 59.291968, longitude: 18.117070} }
+        coordinates: {latitude: 59.291968, longitude: 18.117070}#{latitude: 59.291968, longitude: 18.117070} 
       },
       headers: headers
     end

@@ -7,6 +7,7 @@ FactoryBot.define do
     duration {Faker::Number.between(from: 10, to: 300)}
     location {'Sörmlandsleden'} 
     continent {'Asia'} 
+    coordinates { Coordinates.create({latitude: 59.291968, longitude: 18.117070}) }
     association :user, factory: :user
 
     after(:create) do |trail|

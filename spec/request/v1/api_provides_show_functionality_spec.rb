@@ -16,10 +16,9 @@ RSpec.describe 'API provides show functionality', type: :request do
         'extra'=>newTrail.extra,
         'duration'=>newTrail.duration,
         'location'=>newTrail.location,
-        'latitude'=>newTrail.latitude,
-        'longitude'=>newTrail.longitude,
         'continent'=>newTrail.continent,
         'user_id'=>newTrail.user_id,
+        'coordinates'=>newTrail.coordinates,
         'image'=>response_json['image']
       }
       expect(response_json).to eq expect_response

@@ -1,9 +1,9 @@
 RSpec.describe 'Provides create & image attachment possibility', type: :request do
-  describe 'Trail can be created and have image attached' do
-    let(:newuser) { create(:user) }
-    let(:credentials) { newuser.create_new_auth_token}
-    let(:headers) {{ HTTP_ACCEPT: "application/json" }.merge!(credentials)}
+  let(:newuser) { create(:user) }
+  let(:credentials) { newuser.create_new_auth_token}
+  let(:headers) {{ HTTP_ACCEPT: "application/json" }.merge!(credentials)}
 
+  describe 'Trail can be created and have image attached' do
     before do
       post '/v1/trails', 
       params: {
@@ -13,9 +13,8 @@ RSpec.describe 'Provides create & image attachment possibility', type: :request 
         extra: 'Watch out for the trains',
         duration: 90,
         location: 'Sörmlandsleden, Stockholm',
-        latitude: 59.291968,
-        longitude: 18.117070,
         continent: 'Asia',
+        coordinates: {latitude: 59.291968, longitude: 18.117070},
         image: {
           type: 'application/jpg',
           encoder: 'name=new_iphone.jpg;base64',
@@ -38,8 +37,6 @@ RSpec.describe 'Provides create & image attachment possibility', type: :request 
   end
 
   describe 'gives error if title too short' do
-    let(:headers) {{ HTTP_ACCEPT: 'application/json' }}
-
     before do
       post '/v1/trails', 
       params: {
@@ -48,7 +45,8 @@ RSpec.describe 'Provides create & image attachment possibility', type: :request 
         intensity: 1,
         extra: 'Watch out for the trains',
         duration: 90,
-        location: 'Roslagen, Stockholm'
+        location: 'Roslagen, Stockholm',
+        user_id: newuser.id
       }, 
       headers: headers
     end
@@ -62,9 +60,7 @@ RSpec.describe 'Provides create & image attachment possibility', type: :request 
     end
   end
 
-  describe 'gives error if no input in duration' do
-    let(:headers) {{ HTTP_ACCEPT: 'application/json' }}
-    
+  describe 'gives error if no input in duration' do  
     before do
       post '/v1/trails', 
       params: {
@@ -73,7 +69,8 @@ RSpec.describe 'Provides create & image attachment possibility', type: :request 
         intensity: 1,
         extra: 'extra extra',
         duration: nil,
-        location: 'Roslagen, Stockholm'
+        location: 'Roslagen, Stockholm',
+        user_id: newuser.id
       },
       headers: headers
     end
