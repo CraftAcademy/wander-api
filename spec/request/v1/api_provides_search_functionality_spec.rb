@@ -1,6 +1,6 @@
 RSpec.describe 'API provides search functionality', type: :request do
   describe 'displays search results' do
-    let!(:trail_1) { create(:trail, title: 'Stockholm Hagaparken Trail') }
+    let!(:trail_1) { create(:trail, title: 'Stockholm Hagaparken Trail', city: 'Stockholm') }
     let!(:trail_2) { create(:trail, city: 'Stockholm') }
     
     before do
@@ -16,7 +16,7 @@ RSpec.describe 'API provides search functionality', type: :request do
     end
 
     it 'trail has search query as city' do
-      expect(response_json.second['city']).to include 'Stockholm'
+      expect(response_json.second['city']).to eq 'Stockholm'
     end
   end
 
