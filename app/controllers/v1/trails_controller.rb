@@ -5,6 +5,9 @@ class V1::TrailsController < ApplicationController
     if params[:continent].present?
       trails = Trail.where(continent: params[:continent])
       render json: ActiveModel::Serializer::CollectionSerializer.new(trails, serializer: TrailsSerializer)
+    elsif params[:search].present?
+      filtered_trails = SearchService.search(params[:search])
+      render json: ActiveModel::Serializer::CollectionSerializer.new(filtered_trails, serializer: TrailsSerializer)
     else
     trails = Trail.all
       if trails.empty?
