@@ -9,7 +9,7 @@ RSpec.describe 'API provides bookmark functionality', type: :request do
     before do
       post '/v1/bookmarks/',
         params: {
-          trail_id: trail.id
+          id: trail.id
         },
         headers: headers
     end
@@ -45,7 +45,7 @@ RSpec.describe 'API provides bookmark functionality', type: :request do
       user.bookmarked_trails << trail_2
       delete "/v1/bookmarks/#{trail.id}",
         params: {
-          trail_id: trail.id
+          id: trail.id
         },
         headers: headers
     end
