@@ -4,7 +4,7 @@ RSpec.describe 'API provides search functionality', type: :request do
     let!(:trail_2) { create(:trail, city: 'Stockholm') }
     
     before do
-      get '/v1/trails?search=Stockholm'
+      get '/v1/trails/?search=Stockholm'
     end
    
     it 'returns 2 trails' do
@@ -22,7 +22,7 @@ RSpec.describe 'API provides search functionality', type: :request do
 
   describe 'returns error if there are no trails' do
     before do
-      get '/v1/trails?search'
+      get '/v1/trails/?search'
     end
 
     it 'returns error status' do
@@ -30,7 +30,7 @@ RSpec.describe 'API provides search functionality', type: :request do
     end
 
     it 'returns error message' do
-      expect(response_json['error_message']).to eq 'Needs to be 2 or more letters'
+      expect(response_json['error_message']).to eq 'No trails here, turn around.'
     end
   end
 end

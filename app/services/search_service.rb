@@ -6,7 +6,8 @@ module SearchService
         if trail.title.downcase.include?(query) ||
           trail.description.downcase.include?(query) ||
           trail.city.downcase.include?(query) ||
-          trail.country.downcase.include?(query) ||
+          trail.country.downcase.include?(query)
+          trail
         end
       end
   end
