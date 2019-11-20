@@ -47,7 +47,7 @@ end
 
 1.times do
   trail = Trail.new(
-    title: 'Mt.fuji, Yoshida trail', 
+    title: 'Mt.Fuji, Yoshida trail', 
     description: 'An experience of a lifetime. I hiked to the summit from the Subaru Line 5th Station at 7.5k ft in about 4.5 hours. Even with poor weather toward the summit the views were amazing.Several people on my hiking bus did not summit due to altitude sickness and/or poor physical fitness.', 
     intensity: 5, 
     extra: 'Super beautiful but dont forget to buy one of those walking sticks that they sell at the climbing stations!', 
@@ -77,10 +77,10 @@ end
     continent: 'South America',
     user_id: user.id
   )
-  trail.coordinates.new(latitude: 13.1631, longitude: 72.5450)
-  trail.coordinates.new(latitude: 13.1600, longitude: 72.5250)
-  trail.coordinates.new(latitude: 13.1580, longitude: 72.5100)
-  trail.coordinates.new(latitude: 13.1570, longitude: 72.5001)
+  trail.coordinates.new(latitude: -13.1631, longitude: -72.5450)
+  trail.coordinates.new(latitude: -13.170994, longitude: -72.542927)
+  trail.coordinates.new(latitude: -13.173689, longitude: -72.533666)
+  trail.coordinates.new(latitude: -13.192308, longitude: -72.539440)
   trail.save
   trail.image.attach(io: File.open('spec/fixtures/MachuPicchu.png'), filename: 'MachuPicchu.png')
 end
@@ -103,4 +103,24 @@ end
   trail.coordinates.new(latitude: 36.0965, longitude: -112.1113)
   trail.save
   trail.image.attach(io: File.open('spec/fixtures/grand_can.png'), filename: 'grand_can.png')
+end
+
+1.times do
+  trail = Trail.new(
+    title: 'Gunung Mugajah Trek', 
+    description: 'To see an amazing view in the djungle of northern Sumatra and be amazed by the beauty of what the world has to over!', 
+    intensity: 2, 
+    extra: 'Remember to bring mosquito spray and hiking boots - the trek gets muddy and the mosquitos do not leave you alone!', 
+    duration: 400, 
+    country: 'Indonesia',
+    city: 'Medan',
+    continent: 'Asia',
+    user_id: user.id
+  )
+  trail.coordinates.new(latitude: 3.44589, longitude: 98.07316)
+  trail.coordinates.new(latitude: 4.193508,  longitude: 97.365763)
+  trail.coordinates.new(latitude: 4.056541, longitude: 97.468545)
+  trail.coordinates.new(latitude: 4.2517, longitude: 97.4208)
+  trail.save
+  trail.image.attach(io: File.open('spec/fixtures/Gunung.jpeg'), filename: 'Gunung.jpeg')
 end
