@@ -31,7 +31,7 @@ class V1::BookmarksController < ApplicationController
   private
 
   def get_trail
-    @trail = Trail.find_by_id(params[:trail_id])
+    @trail = Trail.find_by_id(params[:id])
   end
 
   def render_error_message(message, status) 
