@@ -122,5 +122,5 @@ end
   trail.coordinates.new(latitude: 4.056541, longitude: 97.468545)
   trail.coordinates.new(latitude: 4.2517, longitude: 97.4208)
   trail.save
-  trail.image.attach(io: File.open('spec/fixtures/grand_can.png'), filename: 'grand_can.png')
+  trail.image.attach(io: File.open('spec/fixtures/Gunung.jpeg'), filename: 'Gunung.jpeg')
 end
