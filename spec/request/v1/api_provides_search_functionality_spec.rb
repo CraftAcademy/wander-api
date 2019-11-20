@@ -16,7 +16,7 @@ RSpec.describe 'API provides search functionality', type: :request do
     end
 
     it 'trail has search query as city' do
-      expect(response_json.last['city']).to include 'Stockholm'
+      expect(response_json.second['city']).to include 'Stockholm'
     end
   end
 
