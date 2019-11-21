@@ -12,7 +12,7 @@ class V1::LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by_id(params[:like_id])
+    @like = Like.find(params[:id])
     @like.destroy
     render json:  @trail, serializer: TrailsSerializer
   end
