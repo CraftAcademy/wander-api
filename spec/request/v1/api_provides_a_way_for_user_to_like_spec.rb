@@ -48,3 +48,4 @@ RSpec.describe 'Like Functionality', type: :request do
       expect(trail.likes).to eq []
     end
   end
+end
