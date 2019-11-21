@@ -8,7 +8,7 @@ RSpec.describe 'Like Functionality', type: :request do
     before do
       post '/v1/likes/',
         params: {
-          id: trail.id,
+          trail_id: trail.id,
           user_id: user.id,
         },
         headers: headers

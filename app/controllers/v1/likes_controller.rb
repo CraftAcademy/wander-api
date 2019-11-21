@@ -3,13 +3,11 @@ class V1::LikesController < ApplicationController
   before_action :get_trail, only: %i[create destroy]
 
   def create
-  
     binding.pry
-    @like = Like.new(like_params)
-    @trail.user_likes << @like
-    if @like.save
+    @trail.user_likes.new(like_params)
+    if @trail.save
       render json: {
-        data: ActiveModel::Serializer::CollectionSerializer.new(@trail.user_likes, serializer: TrailsSerializer) 
+        data: ActiveModel::Serializer::CollectionSerializer.new(@trail, serializer: TrailsSerializer) 
       }
     else
       render_error_message('Done goofed', 400)
@@ -20,18 +18,18 @@ class V1::LikesController < ApplicationController
     @like = current_user.likes.find(params[:id])
     @like.destroy
     render json: {
-      data: ActiveModel::Serializer::CollectionSerializer.new(@trail.user_likes, serializer: TrailsSerializer) 
+      data: ActiveModel::Serializer::CollectionSerializer.new(@trail, serializer: TrailsSerializer) 
     }
   end
 
   private
 
   def get_trail
-    @trail = Trail.find_by_id(params[:id])
+    @trail = Trail.find_by_id(params[:trail_id])
   end
 
   def like_params
-    params.permit(:value, :user_id, :id)
+    params.permit(:user_id, :trail_id)
   end
 
   def render_error_message(message, status) 
