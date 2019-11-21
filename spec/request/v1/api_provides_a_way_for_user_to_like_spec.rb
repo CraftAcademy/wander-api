@@ -6,14 +6,17 @@ RSpec.describe 'Like Functionality', type: :request do
 
   describe 'User can like a trail' do
     before do
-      post 'v1/likes'
+      post '/v1/likes/',
         params: {
-          like_id: like.id,
+          id: likes.id
         },
         headers: headers
+       
     end
 
     it 'Ouputs status 200' do
+      binding.pry
+
       expect(response.status).to eq 200
     end
 
