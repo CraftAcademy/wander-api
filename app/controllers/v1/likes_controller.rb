@@ -3,23 +3,18 @@ class V1::LikesController < ApplicationController
   before_action :get_trail, only: %i[create destroy]
 
   def create
-    binding.pry
-    @trail.user_likes.new(like_params)
-    if @trail.save
-      render json: {
-        data: ActiveModel::Serializer::CollectionSerializer.new(@trail, serializer: TrailsSerializer) 
-      }
+    like = Like.new(like_params)
+    if like.save
+      render json: @trail, serializer: TrailsSerializer
     else
       render_error_message('Done goofed', 400)
     end
   end
 
   def destroy
-    @like = current_user.likes.find(params[:id])
+    @like = Like.find_by_id(params[:id])
     @like.destroy
-    render json: {
-      data: ActiveModel::Serializer::CollectionSerializer.new(@trail, serializer: TrailsSerializer) 
-    }
+    render json:  @trail, serializer: TrailsSerializer
   end
 
   private
