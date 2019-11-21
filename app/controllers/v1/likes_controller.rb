@@ -1,6 +1,6 @@
 class V1::LikesController < ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
-  before_action :get_trail, only: %i[create destroy]
+  before_action :get_trail, only: %i[create index destroy]
 
   def create
     like = Like.new(like_params)
@@ -16,6 +16,11 @@ class V1::LikesController < ApplicationController
     @like.destroy
     render json:  @trail, serializer: TrailsSerializer
   end
+
+  # def index
+  #   trail_likes.to_string = @trail.likes.count
+  #   render json: ActiveModel::Serializer::CollectionSerializer.new(trail_likes, serializer: TrailsSerializer)
+  # end
 
   private
 

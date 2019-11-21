@@ -1,6 +1,7 @@
 RSpec.describe 'Like Functionality', type: :request do
   let!(:trail) { create(:trail) }
   let(:user_1) { create(:user) }
+  let(:user_2) { create(:user) }
   let(:credentials) { user_1.create_new_auth_token }
   let(:headers) {{ HTTP_ACCEPT: "application/json" }.merge!(credentials)}
 
@@ -16,6 +17,15 @@ RSpec.describe 'Like Functionality', type: :request do
 
     it 'Gives status 200' do
       expect(response.status).to eq 200
+    end
+
+    it 'Trail likes has 1 like' do
+      expect(trail.likes.count).to eq 1
+    end
+
+    it 'Trail likes has 2 likes' do
+      like = Like.create(user_id: user_2.id, trail_id: trail.id)
+      expect(trail.likes.count).to eq 2 
     end
   end
 
@@ -38,19 +48,3 @@ RSpec.describe 'Like Functionality', type: :request do
       expect(trail.likes).to eq []
     end
   end
-
-  describe 'Visible likes amount' do
-    before do
-      get '/v1/likes/',
-        params: {
-          trail_id: trail.id,
-          user_id: user_1.id,
-        },
-        headers: headers
-    end
-
-    it 'User can view the liked amount' do
-      expect(response.count).to eq 1
-    end
-  end
-end 
