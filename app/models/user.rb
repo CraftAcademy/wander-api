@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
 
   has_many :bookmarks
   has_many :bookmarked_trails, through: :bookmarks, source: :trail
+
+  has_many :likes, dependent: :destroy
 end
