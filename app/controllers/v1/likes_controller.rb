@@ -2,6 +2,18 @@ class V1::LikesController < ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
   before_action :get_trail, only: %i[create index destroy]
 
+    def index
+     if @like = Trail.find(params[:trail_id]).likes
+      render json: @like
+    else
+      render_error_message('Sum ting wong', 400)
+    end
+  end
+
+
+  # like = Like.find(trail_id: params[:trail_id])
+# like = Trail.find(params[:trail_id]).likes
+
   def create
     like = Like.create(trail_id: params[:trail_id], user_id: current_user.id)
     if like.save

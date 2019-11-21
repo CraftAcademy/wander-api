@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   namespace :v1, defaults: { format: :json } do
     resources :trails, only: [:index, :create, :show]
     resources :bookmarks, only: [:create, :index, :destroy]
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: [:index, :create, :destroy]
   end
 end
