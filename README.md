@@ -22,6 +22,11 @@ This application consists of a front-end Client and a back-end API.
 During this project we worked agile using 7 day sprints, you can check the whole design sprint, read our user stories and our features on our [Pivotal Tracker board](https://www.pivotaltracker.com/n/projects/2416753). 
 
 ---
+## Snapshot of the application
+
+![](Wandermap.png)
+
+---
 ## Getting Started
 If you want to try out the code for yourself on your local machine:
 Fork the repo, clone it down, make sure you run `bundle install` and `rails db:setup`. 
