@@ -1,5 +1,6 @@
 Bookmark.destroy_all
 Coordinate.destroy_all
+Like.destroy_all
 Trail.destroy_all
 User.destroy_all
 

@@ -1,7 +1,11 @@
 class TrailsSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :title, :description, :intensity, :duration, :city, :country, :extra, :image, :continent, :coordinates, :user_id
+  attributes :id, :title, :description, :intensity, :duration, :city, :country, :extra, :image, :continent, :coordinates, :user_id, :likes
 
+  def likes
+    object.likes.count
+  end
+  
   def coordinates
     object.coordinates.map do |coords|
     {latitude: coords[:latitude], longitude: coords[:longitude]}

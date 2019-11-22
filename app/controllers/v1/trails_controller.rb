@@ -44,8 +44,8 @@ class V1::TrailsController < ApplicationController
 
   def show
     if Trail.exists?(id: params[:id])
-      trail = Trail.find(params[:id])
-      render json: trail, serializer: TrailsSerializer
+      @trail = Trail.find(params[:id])
+      render json: {trail: TrailsSerializer.new(@trail), like_status: like_status}
     else
       render_error_message('There is no trail here go back.', 400 )
   end
@@ -64,6 +64,12 @@ end
   def attach_image
     if params['image'] && params['image'].present?
       DecodeService.attach_image(params['image'][0], @trail.image)
+    end
+  end
+
+  def like_status
+    if current_user
+     Like.where(trail_id: @trail.id, user_id: current_user.id).length > 0
     end
   end
 end

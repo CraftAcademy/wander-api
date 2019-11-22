@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_162816) do
+ActiveRecord::Schema.define(version: 2019_11_21_085454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 2019_11_19_162816) do
     t.float "latitude", null: false
     t.float "longitude", null: false
     t.index ["trail_id"], name: "index_coordinates_on_trail_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "trail_id", null: false
+    t.integer "value", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["trail_id"], name: "index_likes_on_trail_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "trails", force: :cascade do |t|
@@ -104,5 +114,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_162816) do
   add_foreign_key "bookmarks", "trails"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "coordinates", "trails"
+  add_foreign_key "likes", "trails"
+  add_foreign_key "likes", "users"
   add_foreign_key "trails", "users"
 end
