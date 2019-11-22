@@ -13,9 +13,12 @@ class V1::LikesController < ApplicationController
 
   def destroy
     @like = Like.find(params[:id])
-    @like.destroy
+    if @like.destroy
     render json:  @trail, serializer: TrailsSerializer
+    else
+      render_error_message('You duun like??', 400)
   end
+end
 
   private
 
