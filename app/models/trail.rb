@@ -6,6 +6,6 @@ class Trail < ApplicationRecord
   belongs_to :user
   has_many :coordinates
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :user_likes, through: :likes, source: :user
 end
