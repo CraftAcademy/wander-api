@@ -12,8 +12,10 @@ class V1::LikesController < ApplicationController
   end
 
   def destroy
+
     @like = Like.where(trail_id: params[:id], user_id: current_user.id )
     @trail = Trail.find_by_id(params[:id])
+    # binding.pry
     @like.last.destroy
     render json:  @trail, serializer: TrailsSerializer
   end

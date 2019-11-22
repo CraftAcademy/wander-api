@@ -7,9 +7,12 @@ RSpec.describe 'API provides show functionality', type: :request do
     end
 
     it 'returns the data in its correct structure' do
+      
+#binding.pry
+      
       expect_response = 
-      {
-        'id'=>newTrail.id,
+      {'trail'=> 
+       { 'id'=>newTrail.id,
         'title'=>newTrail.title,
         'description'=>newTrail.description,
         'intensity'=>newTrail.intensity,
@@ -21,9 +24,11 @@ RSpec.describe 'API provides show functionality', type: :request do
         'user_id'=>newTrail.user_id,
         'likes'=>newTrail.likes.count,
         'coordinates'=>[],
-        'image'=>response_json['image']
+        'image'=>response_json['image'] },
+        'like_status'=>response_json['like_status']
       }
-      expect(response_json).to eq expect_response
+
+      expect(response_json).to include expect_response
     end
     
     it 'returns a positive response status' do

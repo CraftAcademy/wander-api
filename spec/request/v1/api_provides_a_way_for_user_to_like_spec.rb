@@ -32,6 +32,7 @@ RSpec.describe 'Like Functionality', type: :request do
   describe 'User can UnLike a trail' do
     before do
       like = Like.create(user_id: user_1.id, trail_id: trail.id)
+     
       delete "/v1/likes/#{like.id}",
         params: {
           trail_id: trail.id,
@@ -41,6 +42,7 @@ RSpec.describe 'Like Functionality', type: :request do
     end
 
     it 'Gives status 200' do
+      # binding.pry
       expect(response.status).to eq 200      
     end
 
