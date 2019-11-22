@@ -28,26 +28,4 @@ RSpec.describe 'Like Functionality', type: :request do
       expect(trail.likes.count).to eq 2 
     end
   end
-
-  describe 'User can UnLike a trail' do
-    before do
-      like = Like.create(user_id: user_1.id, trail_id: trail.id)
-     
-      delete "/v1/likes/#{like.id}",
-        params: {
-          trail_id: trail.id,
-          user_id: user_1.id,
-        },
-        headers: headers
-    end
-
-    it 'Gives status 200' do
-      # binding.pry
-      expect(response.status).to eq 200      
-    end
-
-    it 'trails likes are empty' do
-      expect(trail.likes).to eq []
-    end
-  end
 end
