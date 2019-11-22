@@ -48,21 +48,4 @@ RSpec.describe 'Like Functionality', type: :request do
       expect(trail.likes).to eq []
     end
   end
-
-
-
-  describe 'returns likes' do
-    before do
-      like = Like.create(user_id: user_1.id, trail_id: trail.id)
-      get '/v1/likes',
-      params: {
-        trail_id: trail.id
-      }
-    end
-    
-    it 'returns like' do
-      expect(response_json[0]).to include 'id'
-    end
-  end
 end
-

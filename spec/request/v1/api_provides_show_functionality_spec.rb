@@ -19,6 +19,7 @@ RSpec.describe 'API provides show functionality', type: :request do
         'country'=>newTrail.country,
         'continent'=>newTrail.continent,
         'user_id'=>newTrail.user_id,
+        'likes'=>newTrail.likes.count,
         'coordinates'=>[],
         'image'=>response_json['image']
       }
